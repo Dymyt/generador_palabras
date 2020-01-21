@@ -1,17 +1,23 @@
+#Importo tkinter para generar la interfaz gráfica y generadorPalabras como backEnd
 from tkinter import *
 from tkinter.ttk import *
 from generadorPalabras import *
 
+#Creación de la ventana y nombre
 root = Tk()
 root.geometry("650x500")
 root.title ("GENERADOR DE PALABRAS")
 
-#Variables
-
+#VARIABLES: inputLetras serán las letras de las que el usuario quiere generar palabras
+#inputNumero es el numero de letras con el que queremos que se formen las palabras
+#outputSolucion es la variable que albergará lo que queremos que se muestre por pantalla
 inputLetras = StringVar()
 inputNumero = IntVar()
 outputSolucion = StringVar()
-#Funciones
+
+#FUNCIONES, input_letras e input_numero sirven a botonGenerar para dar a la función dentro de GENERADORDEPALABRAS 
+#de los parámetros, luego borramos todo texto que pudiera haber en nuestro output e introducimos la solución a través
+#de la variable outputSolucion
 def retrieve_input_letras():
     inputLetras.set(textoInput.get("1.0",END))
 def retrieve_input_numero():
@@ -23,10 +29,7 @@ def botonGenerar():
     textoOutput.delete('1.0', END)
     textoOutput.insert(INSERT,  outputSolucion.get())
 
-
-
-
-#ELEMENTOS
+#ELEMENTOS de la interfaz:
 escribeLetras = Label(root, text = "Escribe todas las letras seguidas: ").pack(pady = 20)
 textoInput = Text(root, bg = "white", bd= 3, height =1, width = 10)
 textoInput.pack()
@@ -39,5 +42,5 @@ generarBoton = Button(root, text = "GENERAR", cursor = "cross", command = botonG
 textoOutput = Text(root, bg = "white", bd= 3, height =10, width = 70)
 textoOutput.pack(pady = 20)
 
-
+#Final
 root.mainloop()
